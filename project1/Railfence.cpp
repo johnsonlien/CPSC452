@@ -3,7 +3,6 @@
 #include <string>
 #include <iostream>
 
-
 bool Railfence::setKey(const string& key) {
 	//Our key needs to be an int
 	if (key.length() > 0) {
@@ -15,19 +14,19 @@ bool Railfence::setKey(const string& key) {
 		}
 		return true;
 	}
-	cout << ("You did not enter a key\n");
+	printf("You did not enter a key\n");
 	return false;
 }
 
 string Railfence::encrypt(const string& plaintext) {
-
+	
 	string encrypted = "";
 	// _key is the variable for key
 	int num_rows = stoi(_key);
 	int temp1 = 0;
 	if (num_rows == 0) {
 		cout << "Invalid Key" << endl;
-		return false;
+		exit(EXIT_FAILURE);
 	}
 	for (int i = 0; i < num_rows; i++) {
 		temp1 += i;
@@ -38,18 +37,18 @@ string Railfence::encrypt(const string& plaintext) {
 		temp1 = 0;
 		encrypted += '\n';
 	}
-
+	
 	return encrypted;
-
+	
 }
 
 string Railfence::decrypt(const string& cipherText) {
-
+	
 	string decrypted = "";
 	string stripped = "";
 	int num_rows = stoi(_key);
-
-
+	
+	
 	//First remove newline characters
 	for (int i = 0; i < cipherText.length(); i++) {
 		if (cipherText[i] != '\n') {
@@ -87,7 +86,7 @@ string Railfence::decrypt(const string& cipherText) {
 		columncounter++;
 	}
 	//last row
-
+	
 
 	return decrypted;
 }
