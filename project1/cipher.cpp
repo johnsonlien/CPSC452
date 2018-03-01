@@ -1,7 +1,10 @@
+
 #include <string>
 #include "CipherInterface.h"
 #include "Playfair.h"
 #include "Vigenere.h"
+#include "Railfence.h"
+
 
 // ./cipher <CIPHER NAME> <KEY> <ENC/DEC> <INPUT FILE> <OUTPUT FILE> 
 /*Valid names
@@ -23,8 +26,11 @@ int main(int argc, char** argv)
 		
 
 	/* Create an instance of the Playfair cipher */	
-	CipherInterface* cipher = new Playfair();
-	
+	//CipherInterface* cipher = new Playfair();
+	CipherInterface* cipher = new Railfence();
+	//put some if else here ^^
+
+
 	/* Error checks */
 	if(!cipher)
 	{
@@ -34,13 +40,15 @@ int main(int argc, char** argv)
 	}
 	
 	/* Set the encryption key */
-	cipher->setKey("security");
+	cipher->setKey("2");
 	
 	/* Perform encryption */
 	string cipherText = cipher->encrypt("helloworld");
+	cout << cipherText;
 	
 	/* Perform decryption */
 	cipher->decrypt(cipherText);	
 	
+	system("pause");
 	return 0;
 }
