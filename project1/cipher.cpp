@@ -4,6 +4,7 @@
 #include "Playfair.h"
 #include "Vigenere.h"
 #include "Railfence.h"
+#include "Caesar.h"
 
 
 // ./cipher <CIPHER NAME> <KEY> <ENC/DEC> <INPUT FILE> <OUTPUT FILE> 
@@ -40,14 +41,15 @@ int main(int argc, char** argv)
 	}
 	
 	/* Set the encryption key */
-	cipher->setKey("2");
+	cipher->setKey("3");
 	
 	/* Perform encryption */
 	string cipherText = cipher->encrypt("helloworld");
-	cout << cipherText;
+	cout << "ENCRYPT: " << endl << cipherText << endl;
 	
 	/* Perform decryption */
-	cipher->decrypt(cipherText);	
+	string originaltext = cipher->decrypt(cipherText);	
+	cout << "DECRYPT: " << endl << originaltext << endl;
 	
 	system("pause");
 	return 0;
