@@ -19,7 +19,6 @@ bool Caesar::setKey(const string& key) {
 }
 
 string Caesar::encrypt(const string& plaintext) {
-
 	string encrypted = "";
 	// _key is the variable for key
 	int offset = stoi(_key) % 26;
