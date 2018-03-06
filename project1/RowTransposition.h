@@ -17,7 +17,7 @@ class RowTransposition: public CipherInterface
 		 */
 		virtual bool setKey(const string& key);
 
-		/**
+		/**	
 		 * Encrypts a plaintext string
 		 * @param plaintext - the plaintext string
 		 * @return - the encrypted ciphertext string
@@ -30,11 +30,11 @@ class RowTransposition: public CipherInterface
 		 * @return - the plaintext
 		 */
 		virtual string decrypt(const string& ciphertext);
-
+			
 		/* The protected members */
 	protected:
 		string _key;
-
+	
 };
 
 

@@ -5,24 +5,34 @@
 #include <vector>
 
 bool RowTransposition::setKey(const string& key) {
-	//Our key needs to be an int
 	_key = key;
 	return false;
 }
 
 string RowTransposition::encrypt(const string& plaintext) {
-
+	
 	string encrypted = "";
+	string paddedPlaintext = plaintext;
 	int lengthPlaintext = plaintext.length();
 	int lengthKey = _key.length();
 	int num_rows = lengthPlaintext / lengthKey;
 	int plaintextPosition = 0;
 
+	//Pads the plaintext with extra characters to fit matrix
+	if (lengthPlaintext % lengthKey != 0) {
+		int extraPadding = lengthKey - (lengthPlaintext % lengthKey);
+		for (int i = 0; i < extraPadding; i++) {
+			paddedPlaintext += int(i) + 'a';
+		}
+		lengthPlaintext = paddedPlaintext.length();
+		num_rows = lengthPlaintext / lengthKey;
+	}
+	
 	//convert plaintext into a matrix
 	vector<string>  plaintextMatrix(num_rows);
 	for (int i = 0; i < num_rows; i++) {
 		for (int j = 0; j < lengthKey; j++) {
-			plaintextMatrix[i].push_back(plaintext[plaintextPosition + j]);
+			plaintextMatrix[i].push_back(paddedPlaintext[plaintextPosition + j]);
 		}
 		plaintextPosition += lengthKey;
 	}
@@ -37,11 +47,11 @@ string RowTransposition::encrypt(const string& plaintext) {
 	}
 
 	return encrypted;
-
+	
 }
 
 string RowTransposition::decrypt(const string& cipherText) {
-
+	
 	string decrypted = "";
 	int lengthCiphertext = cipherText.length();
 	int lengthKey = _key.length();
