@@ -26,3 +26,6 @@ Instructions:
  We did not implement the extra credit.
 
  Notes:
+ 1. Railfence Cipher will add extra characters to the end of the plaintext in order to 
+ fit a matrix according to the key the user inputs. The added characters start at 'a' 
+ then 'b' and so on until it fits the correct matrix size. 
