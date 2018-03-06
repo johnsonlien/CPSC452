@@ -11,13 +11,13 @@ bool RowTransposition::setKey(const string& key) {
 }
 
 string RowTransposition::encrypt(const string& plaintext) {
-	
+
 	string encrypted = "";
 	int lengthPlaintext = plaintext.length();
 	int lengthKey = _key.length();
 	int num_rows = lengthPlaintext / lengthKey;
 	int plaintextPosition = 0;
-	
+
 	//convert plaintext into a matrix
 	vector<string>  plaintextMatrix(num_rows);
 	for (int i = 0; i < num_rows; i++) {
@@ -37,11 +37,11 @@ string RowTransposition::encrypt(const string& plaintext) {
 	}
 
 	return encrypted;
-	
+
 }
 
 string RowTransposition::decrypt(const string& cipherText) {
-	
+
 	string decrypted = "";
 	int lengthCiphertext = cipherText.length();
 	int lengthKey = _key.length();

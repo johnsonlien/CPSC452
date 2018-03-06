@@ -5,6 +5,7 @@
 #include "Playfair.h"
 #include "Vigenere.h"
 #include "Railfence.h"
+#include "RowTransposition.h"
 #include "Caesar.h"
 
 using namespace std;
@@ -86,7 +87,7 @@ int main(int argc, char** argv)
 		else if(current_cipher.compare(rts) == 0)
 		{
 				/* Create an instance of the row transposition cipher */
-				// STILL HAS TO BE WRITTEN
+				cipher = new RowTransposition();
 		}
 		else
 		{

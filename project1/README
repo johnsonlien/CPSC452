@@ -18,11 +18,11 @@ Instructions:
         VIG: Vigenre
         CES: Caesar
     <KEY> : The encryption key to use.
-    <ENC/DEC> : Choose wheter to encrypt or decrypt, respectively. 
+    <ENC/DEC> : Choose wheter to encrypt or decrypt, respectively.
     <INPUT FILE> : the file from which to read the input.
     <OUTPUT FILE> : the file to which the output shall be written
-    
+
  Extra Credit:
  We did not implement the extra credit.
- 
+
  Notes:
