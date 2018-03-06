@@ -8,8 +8,8 @@ Programming Language:
 C++
 
 Instructions:
-1. To compile, simply, type ''make'' at the terminal (without the quotes).
-2. To run the program type './cipher <CIPHER NAME> <KEY> <ENG/DEC> <INPUTFILE> <OUTPUT FILE>
+1. To compile, simply, type "make" at the terminal (without the quotes).
+2. To run the program type "./cipher <CIPHER NAME> <KEY> <ENG/DEC> <INPUTFILE> <OUTPUT FILE>"
 
     <CIPHER NAME> : Name of the cipher to use. Valid names are:
         PLF: Playfair
