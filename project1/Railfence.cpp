@@ -48,65 +48,45 @@ string Railfence::decrypt(const string& cipherText) {
 	string stripped = "";
 	int num_rows = stoi(_key);
 	
+	
 	//First remove newline characters
 	for (int i = 0; i < cipherText.length(); i++) {
 		if (cipherText[i] != '\n') {
 			stripped += cipherText[i];
 		}
 	}
-	int cipherLength = stripped.length();
-	int extraChar = cipherLength % num_rows;
-
-	//Determine if the length is divisable by num_rows
-	bool isDivisable;
-	if (cipherLength % num_rows == 0) {
-		isDivisable = true;
-	}
-	else isDivisable = false;
-	int columncounter = 0;
-
+	int length = stripped.length();
+	int temp1 = length % num_rows;
 	int num_columns;
-	if (extraChar != 0) {
+	if (temp1 != 0) {
 		num_columns = (stripped.length() / num_rows) + 1;
 	}
 	else {
 		num_columns = stripped.length() / num_rows;
 	}
-
-
-	if (isDivisable) {
-		for (int i = 0; i < cipherLength / num_rows; i++) {
-			for (int j = 0; j < cipherLength;) {
-				decrypted += stripped[j + columncounter];
-				j += (cipherLength / num_rows);
+	int columncounter = 0;
+	while (columncounter != num_columns) {
+		if (columncounter == num_columns - 1) {
+			for (int i = 0; i < length % num_rows; i++) {
+				decrypted += stripped[columncounter];
+				columncounter += (length / num_rows) + 1;
 			}
-			columncounter++;
+			break;
 		}
-	}
-	else {
-		while (columncounter != num_columns) {
-			//check if the current column is the last one
-			if (columncounter == num_columns - 1) {
-				for (int i = 0; i < cipherLength % num_rows; i++) {
-					decrypted += stripped[columncounter];
-					columncounter += (cipherLength / num_rows) + 1;
-				}
-				break;
+		for (int i = columncounter; i < stripped.length(); i++) {
+			decrypted += stripped[i];
+			//check for last row
+			if (temp1 != 0) {
+				i++;
+				temp1--;
 			}
-			//this does a check for when there are less 
-			//characters in a colum than there are rows
-			for (int i = columncounter; i < stripped.length(); i++) {
-				decrypted += stripped[i];
-				if (extraChar != 0) {
-					i++;
-					extraChar--;
-				}
-				i += (cipherLength / num_rows) - 1;
-			}
-			extraChar = cipherLength % num_rows;
-			columncounter++;
+			i += (length/num_rows) - 1;
 		}
+		temp1 = length % num_rows;
+		columncounter++;
 	}
+	//last row
+	
 
 	return decrypted;
 }
