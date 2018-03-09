@@ -8,7 +8,7 @@
 bool Vigenere::setKey(const string& key)
 { 
 	for(int i = 0; i < key.length(); i++) {
-		if(isalpha(key[i])) {
+		if(!isalpha(key[i])) {
 			return false;
 		}
 		if(key[i] >= 'a' && key[i] <= 'z') {	//In case of lowercase
@@ -59,7 +59,7 @@ string Vigenere::decrypt(const string& cipherText)
 		else if (temp < 'A' || temp > 'Z') {	//Ignore symbols and numbers
 			continue;
 		}
-		decrypted += (temp + _key[index] + 26)%26 + 'A';	//Formula to get plaintext
+		decrypted += (temp - _key[index] + 26)%26 + 'A';	//Formula to get plaintext
 		index = (index+1)%_key.length();				//recalculate our new index key value
 	}
 	return decrypted;
